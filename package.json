@@ -1,6 +1,6 @@
 {
   "name": "@vizkits/parsedomain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Splits an url into sub-domain, domain and effective top-level-domain",
   "main": "./lib/parseDomain.js",
   "scripts": {
