@@ -2,10 +2,11 @@
 
 const parseTrie = require("../lib/tries/parseTrie");
 
-const fs = require("fs");
-const path = require("path");
-const currentPath = path.join(__dirname, "../build/tries/current/private.complete.json");
-const prePath = path.join(__dirname, "../build/tries/pre/private.complete.json");
-const triePath = fs.existsSync(currentPath) ? currentPath : prePath;
+let trie;
+try {
+  trie = require("../build/tries/current/private.complete.json").trie;
+} catch (e) {
+  trie = require("../build/tries/pre/private.complete.json").trie;
+}
 
-module.exports = parseTrie(require(triePath).trie);
+module.exports = parseTrie(trie);

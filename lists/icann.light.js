@@ -2,10 +2,11 @@
 
 const parseTrie = require("../lib/tries/parseTrie");
 
-const fs = require("fs");
-const path = require("path");
-const currentPath = path.join(__dirname, "../build/tries/current/icann.light.json");
-const prePath = path.join(__dirname, "../build/tries/pre/icann.light.json");
-const triePath = fs.existsSync(currentPath) ? currentPath : prePath;
+let trie;
+try {
+  trie = require("../build/tries/current/icann.light.json").trie;
+} catch (e) {
+  trie = require("../build/tries/pre/icann.light.json").trie;
+}
 
-module.exports = parseTrie(require(triePath).trie);
+module.exports = parseTrie(trie);
